@@ -1,0 +1,386 @@
+<%- include('../partials/head') %>
+
+
+    <body >
+        <div class="main-wrapper">
+            <header class="header-area">
+                <div class="container">
+                    <div class="header-top header-top-ptb-1 border-bottom-1">
+                        <div class="row align-items-center">
+                            <div class=" col-lg-6">
+                                <div class="logo animate__animated animate__slideInLeft ">
+                                    <a href="/home"><span style="color: red;
+                                        font-size: 34px;
+                                        font-weight: 500;">Game</span> <span style="font-size: 20px ;color: black;
+                                        font-weight: 400;">Gallery</span></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="header-action header-action-flex header-action-mrg-right animate__animated animate__slideInRight ">
+                                    <div class="same-style-2 header-search-1">
+                                        <a class="search-toggle" href="#">
+                                            <i class="icon-social-youtube"></i>
+                                        </a>
+                                    </div>
+                                    <div class="same-style-2">
+                                        <a href="wishlist.html"><i class="icon-social-facebook"></i></a>
+                                    </div>
+                                    <div class="same-style-2">
+                                        <a href="login-register.html"> <i class="icon-social-twitter"></i></a>
+                                    </div>
+
+                                    <div class="same-style-2 header-cart">
+                                        <a class="cart-active" href="#">
+                                            <i class="icon-social-instagram"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+            </header>
+
+            <div class="login-register-area " style="padding-top: 55px; padding-bottom: 45px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                            <div class="login-register-wrapper">
+                                <div class="login-register-tab-list nav">
+                                    <a class="active" data-toggle="tab" href="#lg1">
+                                        <h4> login </h4>
+                                    </a>
+                                    <a data-toggle="tab" href="#lg2">
+                                        <h4> register </h4>
+                                    </a>
+                                </div>
+                                <div class="tab-content">
+                                    <div id="lg1" class="tab-pane active">
+                                        <div class="login-form-container"  style="    border: 1px solid ;padding: 40px;">
+                                            <div class="login-register-form">
+                                                <form action="/login" method="post">
+                                                    <span style="color: red;"><%= locals.message? message:'' %></span>
+                                                    <input type="email" name="email" placeholder="Email" style="    border: 1px solid">
+                                                    <input type="password" name="password" placeholder="Password" style="    border: 1px solid">
+                                                      <div>
+                                                       
+                                                            <!-- <i class="bi bi-eye-slash-fill" id="togglePassword"></i> -->
+                                                            <!-- <i class="fa-solid fa-eye" id="togglePassword"></i> -->
+                                                     
+                                                      </div>
+                                                    <div class="button-box">
+                                                       
+                                                        <div class="row  text-center">
+                                                            <div class="col-12" style="    display: flex;
+                                                            justify-content: space-between;">
+                                                                <div><a href="/forgetPassword">Forgot Password?</a></div>
+                                                             <div>  <button type="submit">Login</button></div> 
+                                                             
+                                                            </div>
+                                                            <!-- <div class="login-toggle-btn">
+                                                               
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="lg2" class="tab-pane">
+                                        <div class="login-form-container" style="padding: 40px;border: 1px solid">
+                                            <div class="login-register-form">
+                                                <form action="/signup" method="post" id="submit-form">
+                                                    <div id="message-error" class="text-danger"></div>
+                                                    <div class="row" style="justify-content: space-around;">
+                                                    <input type="text" name="username" placeholder="Username" id="username-input"  class="col-lg-5" style="    border: 1px solid">
+                                                    <input name="userEmail" placeholder="Email" type="email" id="email-input"  class="col-lg-5"  style="    border: 1px solid">
+                                                    <input name="userNumber" placeholder="Mobile" type="tel" id="mobno-input" class="col-lg-5"  style="    border: 1px solid">
+                                                    <input type="password" name="password" placeholder="Password" class="col-lg-5"  style="    border: 1px solid" id="password-input">
+                                                    <input type="password" name="confirmPassword"
+                                                        placeholder="Confirm Password" class="col-lg-5" style=" border: 1px solid" id="confirmPassword-input">
+                                                    </div>
+                                                    <div class="row text-center">
+                                                        <div class="col-12">
+                                                            <div class="button-box">
+                                                                <button type="submit">Register</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subscribe-area bg-gray ">
+                <!-- <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="section-title">
+                            <h2>keep connected</h2>
+                            <p>Get updates by subscribe our weekly newsletter</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7">
+                        <div id="mc_embed_signup" class="subscribe-form">
+                            <form id="mc-embedded-subscribe-form" class="validate subscribe-form-style" novalidate="" target="_blank" name="mc-embedded-subscribe-form" method="post" action="https://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
+                                <div id="mc_embed_signup_scroll" class="mc-form">
+                                    <input class="email" type="email" required="" placeholder="Enter your email address" name="EMAIL" value="">
+                                    <div class="mc-news" aria-hidden="true">
+                                        <input type="text" value="" tabindex="-1" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef">
+                                    </div>
+                                    <div class="clear">
+                                        <input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe" value="Subscribe">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            </div>
+            <footer class="footer-area bg-gray pb-30" style="padding-top: 30px;
+        display: flex;
+        /* justify-content: center; */
+        text-align: center;
+    ">
+
+                <div class="col-lg-12">
+                    <span> "Every login is a step toward progress. Keep moving forward!"</span>
+                </div>
+
+            </footer>
+        </div>
+
+        <!-- All JS is here
+============================================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+        <script src="assets/js/vendor/modernizr-3.11.7.min.js"></script>
+        <script src="assets/js/vendor/jquery-v3.6.0.min.js"></script>
+        <script src="assets/js/vendor/jquery-migrate-v3.3.2.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/plugins/slick.js"></script>
+        <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+        <script src="assets/js/plugins/jquery.instagramfeed.min.js"></script>
+        <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+        <script src="assets/js/plugins/wow.js"></script>
+        <script src="assets/js/plugins/jquery-ui-touch-punch.js"></script>
+        <script src="assets/js/plugins/jquery-ui.js"></script>
+        <script src="assets/js/plugins/magnific-popup.js"></script>
+        <script src="assets/js/plugins/sticky-sidebar.js"></script>
+        <script src="assets/js/plugins/easyzoom.js"></script>
+        <script src="assets/js/plugins/scrollup.js"></script>
+        <script src="assets/js/plugins/ajax-mail.js"></script>
+
+        <!-- Use the minified version files listed below for better performance and remove the files listed above  
+<script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script>  -->
+        <!-- Main JS -->
+        <script src="assets/js/main.js"></script>
+
+
+        <script>
+
+            /* Form Validation Start */
+    
+            const form = document.getElementById('submit-form');
+            const fName = document.getElementById('username-input');
+            // const lName = document.getElementById('lname-input');
+            const emailId = document.getElementById('email-input');
+            const mobNo = document.getElementById('mobno-input');
+            const password = document.getElementById('password-input');
+            const confirmPassword = document.getElementById('confirmPassword-input');
+    
+    
+    
+            form.addEventListener('submit', e => {
+    
+    
+                e.preventDefault();
+                console.log('Prevented Default');
+                validateInput();
+            });
+    
+            const setError = (element, message) => {
+    
+                const inputControl = element.parentElement;
+                // const errorDisplay = inputControl.querySelector('.error');
+                // errorDisplay.innerText=message;
+    
+                element.placeholder = message;
+                fName.style.border = '1.5px solid red';
+                // lName.style.border = '1.5px solid red';
+                emailId.style.border = '1.5px solid red';
+                mobNo.style.border = '1.5px solid red';
+                password.style.border = '1.5px solid red';
+                confirmPassword.style.border = '1.5px solid red';
+                inputControl.classList.add('error');
+                inputControl.classList.remove('success');
+    
+            };
+    
+            const setSuccess = element => {
+    
+                const inputControl = element.parentElement;
+                // const errorDisplay= inputControl.querySelector('.error');
+                // errorDisplay.innerText='';
+                element.placeholder = '';
+                inputControl.classList.add('success');
+                inputControl.classList.remove('error');
+            };
+    
+            const isValidFName = fName => {
+    
+                const rename = /^[a-zA-Z]/;
+                return rename.test(String(fName));
+            };
+    
+            // const isValidLName = lName => {
+    
+            //     const rename = /^[a-zA-Z]/;
+            //     return rename.test(String(lName));
+            // };
+    
+            const isValidEmail = emailId => {
+    
+                const re = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+                return re.test(String(emailId).toLowerCase());
+            };
+    
+            const isValidMobNo = mobNo => {
+    
+                const re = /^[0-9]{10}$/;
+                return re.test(mobNo);
+            };
+    
+            const isValidPassword = password => {
+                // Regular expression to validate password
+                // The password must contain at least 8 characters, including at least one uppercase letter, one lowercase letter, and one digit.
+                const re = /^[a-zA-Z\d]{8,}$/;  /* /^(?=.[a-z])(?=.[A-Z])(?=.\d)[a-zA-Z\d]{8,}$/ **/
+                return re.test(password);
+            };
+    
+            const isValidConfirmPassword = confirmPassword => {
+    
+                return confirmPassword === isValidPassword;
+            }
+    
+            const validateInput = () => {
+                console.log("Entered to validate input");
+                const firstNameValue = fName.value.trim();
+                //const lastNameValue = lName.value.trim();
+                const emailIdValue = emailId.value.trim();
+                const mobNoValue = mobNo.value.trim();
+                const passwordValue = document.getElementById('password-input').value.trim();
+                const confirmPasswordValue = document.getElementById('confirmPassword-input').value.trim();
+    
+    
+                if (firstNameValue === '') {
+                    console.log('enterd  two first name');
+                    setError(fName, 'Username is required');
+    
+                } else if (!isValidFName(firstNameValue)) {
+                    //setError(username);
+                    document.getElementById('message-error').innerHTML = 'Names should be alphabets';
+    
+    
+                } else {
+                    console.log("fName Ok");
+                    setSuccess(fName);
+                }
+    
+                // if (lastNameValue === '') {
+    
+                //     setError(lName, 'Last Name is required');
+    
+                // } else if (!isValidLName(lastNameValue)) {
+                //     //setError(username);
+                //     document.getElementById('message-error').innerHTML = 'Names should be alphabets';
+    
+    
+                // } else {
+                //     console.log("lName Ok");
+                //     setSuccess(lName);
+                // }
+    
+                if (emailIdValue === '') {
+    
+                    setError(emailId, 'Email is required');
+    
+                } else if (!isValidEmail(emailIdValue)) {
+    
+                    //alert('Provide a valid Email address')
+                    document.getElementById('message-error').innerHTML = 'Provide a valid email address';
+    
+                } else {
+                    console.log("email Ok");
+                    setSuccess(emailId);
+                }
+    
+                if (mobNoValue === '') {
+    
+                    setError(mobNo, 'Mobile No is required');
+    
+                } else if (!isValidMobNo(mobNoValue)) {
+    
+                    //alert('Provide a valid Email address')
+                    document.getElementById('message-error').innerHTML = 'Provide a valid mobile number';
+    
+                } else {
+                    console.log("Mobile oK")
+                    setSuccess(mobNo);
+                }
+    
+                if (passwordValue === '') {
+    
+                    setError(password, 'Password is required');
+    
+                } else if (!isValidPassword(passwordValue)) {
+    
+                    //alert('Provide a valid Email address')
+                    document.getElementById('message-error').innerHTML = 'Provide a strong password';
+                    //setError(password,'Provide a strong password');
+    
+                } else {
+                    console.log("Password Ok")
+                    setSuccess(password);
+                }
+    
+                if (confirmPasswordValue === '') {
+    
+                    setError(confirmPassword, 'Confirm Password is required');
+    
+                } else if (confirmPasswordValue !== passwordValue) {
+    
+                    document.getElementById('message-error').innerHTML = 'Passwords do not match';
+                } else {
+                    console.log("confirm Password ok");
+                    setSuccess(confirmPassword);
+                }
+    
+                //FOR SUBMISSION:
+    
+                const inputs = [fName, emailId, mobNo, password, confirmPassword];
+    
+                if (inputs.every(input => input.parentElement.classList.contains('success'))) {
+                    form.submit();
+                    console.log("Form submission successful")
+                }
+    
+            };
+            /* Form Validation End */ </script>
+    
+
+    </body>
+
+    </html>
+
+
+    

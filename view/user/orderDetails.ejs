@@ -1,0 +1,532 @@
+<%- include('../partials/head.ejs') %>
+
+
+
+<style>
+    .card {
+        z-index: 0;
+    }
+
+    .top {
+        padding-top: 40px;
+        padding-left: 13% !important;
+        padding-right: 13% !important;
+    }
+
+    /* Icon progressbar */
+
+    #progressbar {
+        margin-bottom: 30px;
+        overflow: hidden;
+        color: #455a64;
+        padding-left: 0;
+        margin-top: 30px;
+    }
+
+    #progressbar li {
+        list-style-type: none;
+        /* font-size: 9px; */
+        width: 25%;
+        float: left;
+        position: relative;
+        /* font-weight: 400; */
+    }
+
+    #progressbar .step0::before {
+        font-family: FontAwesome;
+        content: '\f10c';
+        color: #fff;
+    }
+
+    #progressbar li::before {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        display: block;
+        font-size: 10px;
+        background: #c5cae9;
+        border-radius: 50%;
+        margin: auto;
+        padding: 0;
+    }
+
+    /* Progressbar connector */
+    #progressbar li::after {
+        content: '';
+        width: 100%;
+        height: 4px;
+        background-color: #c5cae9;
+        position: absolute;
+        top: 8px;
+        left: 0;
+        z-index: -1;
+    }
+
+    #progressbar li:last-child::after {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: absolute;
+        left: -50%;
+    }
+
+    #progressbar li:nth-child(2)::after,
+    #progressbar li:nth-child(3)::after {
+        left: -50%;
+    }
+
+    #progressbar li:first-child::after {
+        border-top-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: absolute;
+        left: 50%;
+    }
+
+    /* Color number of the step and the connect tor before it */
+
+    #progressbar li.active::before,
+    #progressbar li.active::after {
+        background-color: #0ac419;
+    }
+
+    #progressbar li.active::before {
+        font-family: FontAwesome;
+        content: '\f00c';
+    }
+
+    @media screen and (max-width: 992px) {
+        .icon-content {
+            width: 50%;
+        }
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="header-large-device">
+            <div class="header-top header-top-ptb-1 border-bottom-1">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="header-offer-wrap">
+                            <p><i class="icon-paper-plane"></i> FREE SHIPPING world wide for all orders over
+                                <span>$199</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="header-top-right">
+                            <div class="same-style-wrap">
+                                <!-- <div class="same-style same-style-border track-order">
+                                <a href="order-tracking.html">Track Your Order</a>
+                            </div> -->
+                                <!-- <div class="same-style same-style-border language-wrap">
+                                <a class="language-dropdown-active" href="#">English <i class="icon-arrow-down"></i></a>
+                                <div class="language-dropdown">
+                                    <ul>
+                                        <li><a href="#">English</a></li>
+                                        <li><a href="#">French</a></li>
+                                        <li><a href="#">German</a></li>
+                                        <li><a href="#">Spanish</a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                                <div class="same-style same-style-border currency-wrap">
+                                    <!-- <a class=" " href="/signup" >Sign Up</a> -->
+
+                                    <a href="/logout">Sign Out</a>
+
+
+                                </div>
+                            </div>
+                            <div class="social-style-1 social-style-1-mrg">
+                                <a href="#"><i class="icon-social-twitter"></i></a>
+                                <a href="#"><i class="icon-social-facebook"></i></a>
+                                <a href="#"><i class="icon-social-instagram"></i></a>
+                                <a href="#"><i class="icon-social-youtube"></i></a>
+                                <a href="#"><i class="icon-social-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo">
+                            <a href="index.html"><span style="color: red;
+                            font-size: 34px;
+                            font-weight: 500;">Game</span> <span style="font-size: 20px ;color: black;
+                            font-weight: 400;">Gallery</span></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="main-menu main-menu-padding-1 main-menu-lh-1">
+                            <nav>
+                                <ul style="text-align: center;">
+                                    <li><a href="/home">HOME </a>
+                                        <!-- <ul class="sub-menu-style">
+                                        <li><a href="index.html">Home version 1 </a></li>
+                                        <li><a href="index-2.html">Home version 2</a></li>
+                                        <li><a href="index-3.html">Home version 3</a></li>
+                                        <li><a href="index-4.html">Home version 4</a></li>
+                                        <li><a href="index-5.html">Home version 5</a></li>
+                                        <li><a href="index-6.html">Home version 6</a></li>
+                                        <li><a href="index-7.html">Home version 7</a></li>
+                                        <li><a href="index-8.html">Home version 8</a></li>
+                                        <li><a href="index-9.html">Home version 9</a></li>
+                                        <li><a href="index-10.html">Home version 10</a></li>
+                                    </ul> -->
+                                    </li>
+                                    <li><a href="/shop">SHOP </a>
+                                        <!-- <ul class="mega-menu-style mega-menu-mrg-1">
+                                        <li>
+                                            <ul>
+                                                <li>
+                                                    <a class="dropdown-title" href="#">Shop Layout</a>
+                                                    <ul>
+                                                        <li><a href="shop.html">standard style</a></li>
+                                                        <li><a href="shop-list.html">shop list style</a></li>
+                                                        <li><a href="shop-fullwide.html">shop fullwide</a></li>
+                                                        <li><a href="shop-no-sidebar.html">grid no sidebar</a></li>
+                                                        <li><a href="shop-list-no-sidebar.html">list no sidebar</a></li>
+                                                        <li><a href="shop-right-sidebar.html">shop right sidebar</a></li>
+                                                        <li><a href="store-location.html">store location</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-title" href="#">Products Layout</a>
+                                                    <ul>
+                                                        <li><a href="product-details.html">tab style 1</a></li>
+                                                        <li><a href="product-details-2.html">tab style 2</a></li>
+                                                        <li><a href="product-details-sticky.html">sticky style</a></li>
+                                                        <li><a href="product-details-gallery.html">gallery style </a></li>
+                                                        <li><a href="product-details-affiliate.html">affiliate style</a></li>
+                                                        <li><a href="product-details-group.html">group style</a></li>
+                                                        <li><a href="product-details-fixed-img.html">fixed image style </a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="shop.html"><img src="assets/images/banner/banner-12.png" alt=""></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul> -->
+                                    </li>
+                                    <li><a href="#">PAGES</a>
+                                        <!-- <ul class="sub-menu-style">
+                                        <li><a href="about-us.html">about us </a></li>
+                                        <li><a href="cart.html">cart page</a></li>
+                                        <li><a href="checkout.html">checkout </a></li>
+                                        <li><a href="my-account.html">my account</a></li>
+                                        <li><a href="wishlist.html">wishlist </a></li>
+                                        <li><a href="compare.html">compare </a></li>
+                                        <li><a href="contact.html">contact us </a></li>
+                                        <li><a href="order-tracking.html">order tracking</a></li>
+                                        <li><a href="login-register.html">login / register </a></li>
+                                    </ul> -->
+                                    </li>
+                                    <li><a href="blog.html">BLOG </a>
+                                        <!-- <ul class="sub-menu-style">
+                                        <li><a href="blog.html">blog standard </a></li>
+                                        <li><a href="blog-no-sidebar.html">blog no sidebar </a></li>
+                                        <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
+                                        <li><a href="blog-details.html">blog details</a></li>
+                                    </ul> -->
+                                    </li>
+                                    <li><a href="contact.html">CONTACT </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3">
+                        <div class="header-action header-action-flex header-action-mrg-right">
+                            <div class="same-style-2 header-search-1">
+                                <a class="search-toggle" href="#">
+                                    <i class="icon-magnifier s-open"></i>
+                                    <i class="icon_close s-close"></i>
+                                </a>
+                                <div class="search-wrap-1">
+                                    <form action="#">
+                                        <input placeholder="Search products…" type="text">
+                                        <button class="button-search"><i class="icon-magnifier"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="same-style-2">
+                                <a href="/profile"><i class="icon-user"></i></a>
+                            </div>
+                            <div class="same-style-2">
+                                <a href="wishlist.html"> <i class="icon-heart"></i> <% if(locals.isLoggedIn && wishCount>0){ %>
+                                    <span class="pro-count red">
+                                        <%=wishCount %>
+                                    </span>
+                                    <% } %></a>
+                            </div>
+                            <div class="same-style-2 header-cart">
+                                <a href="/shoppingCart">
+                                    <i class="icon-basket-loaded"></i>
+                                    <% if(locals.isLoggedIn && cartCount>0){ %>
+                                        <span class="pro-count red">
+                                        <%=cartCount %>
+                                    </span>
+                                    <% } %>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="header-small-device small-device-ptb-1">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <div class="mobile-logo">
+                        <a href="index.html"><span style="color: red;
+                            font-size: 34px;
+                            font-weight: 500;">Game</span> <span style="font-size: 20px ;color: black;
+                            font-weight: 400;">Gallery</span></a>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="header-action header-action-flex">
+                        <div class="same-style-2">
+                            <a href="login-register.html"><i class="icon-user"></i></a>
+                        </div>
+                        <div class="same-style-2">
+                            <a href="wishlist.html"> <i class="icon-heart"></i> <% if(locals.isLoggedIn && wishCount>0){ %>
+                                <span class="pro-count red">
+                                    <%=wishCount %>
+                                </span>
+                                <% } %></a>
+                        </div>
+                        <div class="same-style-2 header-cart">
+                            <a class="cart-active" href="/shoppingCart">
+                                <i class="icon-basket-loaded"></i>
+                                <% if(locals.isLoggedIn && cartCount>0){ %>
+                                    <span class="pro-count red">
+                                    <%=cartCount %>
+                                </span>
+                                <% } %>
+                            </a>
+                        </div>
+                        <div class="same-style-2 main-menu-icon">
+                            <a class="mobile-header-button-active" href="#"><i class="icon-menu"></i> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+    
+
+
+
+
+<section>
+    <div class="container">
+        <div class="mt-5">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row" style="justify-content: space-between;">
+                        <div class="col-md-6">
+                            <h4 class="card-title">Delivery Address</h4>
+                            <h6 class="card-text" style="font-size: 1.2rem;"><strong><%= orderData.deliveryAddress.userName %></strong></h6>
+                            <span class="card-text">
+                            <%= orderData.deliveryAddress.address %>
+                            </span><br>
+                            <% 
+                            let location = orderData.deliveryAddress.town+' '+orderData.deliveryAddress.state+' '+orderData.deliveryAddress.zip
+                            %>
+                            <span><%= location %></span>
+                            <div class="mt-2">
+                                <h6><strong>Phone number</strong></h6>
+                                <span><%= orderData.deliveryAddress.mobile %></span>
+                            </div>
+                        </div>
+                        <% 
+                     
+
+                        if(status < 4){
+                            %>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-danger cancelOrderBTN" id="cancelOrderBTN" data-toggle="modal" onclick="showConfirmationModalFirst('<%= orderData._id %>') "  data-id="" data-target="#cancelOrderPopup">
+                                    Cancel Order
+                                </button>
+                            </div>
+                            <%  
+                        }else if(status == 4){
+                            %>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <a href="/returnOrder/<%= orderData._id %>" class="btn btn-warning">Return</a>
+                            </div>
+                            <% 
+                        }else if(status == 5){
+                            %>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <h4 style="color: red;">Order Cancelled</h4>
+                            </div>
+                            <% 
+                        }else if(status == 6){
+                            %>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <h4 style="color: red;">Order Cancelled By Admin</h4>
+                            </div>
+                            <% 
+                        }else if(status > 6){
+                            %>
+                            <div class="col-md-2 d-flex justify-content-center align-items-center">
+                                <h4 style="color: red;"><%= orderData.status %></h4>
+                            </div>
+                            <% 
+                        }
+                        %>
+                    </div>
+                </div>
+            </div>
+
+            <% 
+            if(status <= 4){
+
+            %>
+                <div class="card pb-3">
+                    <div class="text-center mt-3">
+                        <h4 class="card-title">Order Status</h4>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-12">
+                            <ul id="progressbar" class="text-center">
+                                <li class="<% if(status >= 1){ %>  active <% } %> step0">Order Confirmed </li>
+                                <li class="<% if(status >= 2){ %>  active <% } %> step0">Shipped</li>
+                                <li class="<% if(status >= 3){ %>  active <% } %> step0">Out for delivery</li>
+                                <li class="<% if(status >= 4){ %>  active <% } %> step0">Delivered</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            <%  
+            }
+
+            %>
+
+            <!-- prods -->
+            <div class="row mt-4">
+                <% 
+                for(const pdt of orderData.products){
+                    %>
+                        <div class="col-sm-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex row">
+                                        <div class="col-lg-3">
+                                           
+                                        <a href="/shop/productOverview/<%= pdt.productId._id %>">
+                                            <div class="mx-3">
+                                                <img src="/assets/images/product/<%= pdt.productId.images[0] %>"
+                                                    class="img-fluid" alt="" width="120rem">
+                                            </div>
+                                        </a>
+                                    </div>
+                                        <div class="col-lg-6">
+                                            <h4 class="card-title"><%= pdt.productName %></h4>
+                                            <!-- <span class="card-text" style="color: rgb(99, 99, 99);">Size: M</span><br> -->
+                                            <span class="card-text" style="color: rgb(99, 99, 99);">Quantity : <%= pdt.quantity %></span>
+                                            <h5 class="card-title mt-2">₹ <%= pdt.productPrice %></h5>
+                                            <!-- <div class="col-md-2 d-flex justify-content-center align-items-center"> -->
+                                                <h6
+                                                    <% 
+                                                    if(pdt.status == 'Order Confirmed' || pdt.status == 'Shipped' || pdt.status == 'Out For Delivery' ||  pdt.status == 'Delivered' ){
+                                                        %>
+                                                        style="color: green;"
+                                                        <%  
+                                                    }else if( pdt.status == 'Cancelled' || pdt.status == 'Cancelled By Admin' ){
+                                                        %>
+                                                        style="color: red;"
+                                                        <%  
+                                                    }else if(pdt.status == 'Pending Return Approval'||  pdt.status == 'Returned'){
+                                                        %>
+                                                        style="color: orange;"
+                                                        <%  
+                                                    }
+                                                    %>
+                                                 
+                                                 ><%= pdt.status %></h6>
+                                            <!-- </div> -->
+                                        </div>
+                                        <div class= "  col-lg-3  col-md-4 d-flex mb-3 pt-2 justify-content-center align-items-center">
+                                            <% 
+                                            if(pdt.status == 'Order Confirmed' || pdt.status == 'Shipped' || pdt.status == 'Out For Delivery'){
+                                                %>
+                                                <button href="" type="button"  onclick="showConfirmationModal('<%= orderData._id %>','<%= pdt._id %>')"   class="btn btn-danger"> Cancel </button>
+                                                
+                                                <%  
+                                            }else if(pdt.status == 'Delivered'){
+                                                %>
+                                                <a href="/returnSinglePrdt/<%= orderData._id %>/<%= pdt._id %>" class="btn btn-warning"> Return </a>
+                                                <%  
+                                            }
+                                            %>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+                    <%  
+                }
+                %>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to perform this action?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  Cancel
+                </button>
+                <a href="#" id="confirmationAction" class="btn btn-danger">Confirm</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+
+<script>
+        function showConfirmationModal(orderId,productId) {
+          const modal = new bootstrap.Modal(
+            document.getElementById("confirmationModal")
+          );
+          const confirmationAction = document.getElementById("confirmationAction");
+          confirmationAction.href = `/cancelSinglePrdt/${orderId}/${productId}?cancelledBy=user`;
+          modal.show();
+        }
+      </script>
+
+
+      <script>
+        function showConfirmationModalFirst(orderId) {
+          const modal = new bootstrap.Modal(
+            document.getElementById("confirmationModal")
+          );
+          const confirmationAction = document.getElementById("confirmationAction");
+          confirmationAction.href = `/cancelOrder/${orderId}?cancelledBy=user`;
+          modal.show();
+        }
+      </script>
+
+<%- include('../partials/script.ejs') %>
