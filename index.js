@@ -1,5 +1,5 @@
 const mongoose =  require("mongoose")
-mongoose.connect("mongodb://127.0.0.1:27017/GameGallery")
+mongoose.connect("mongodb+srv://niyazmuhammad688:OPXiTDUA356iH1X8@niyas.599xaps.mongodb.net/?retryWrites=true&w=majority")
 
 const express = require("express")
 require('dotenv').config()
