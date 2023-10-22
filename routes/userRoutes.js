@@ -20,8 +20,10 @@ userRoutes.use(async(req,res,next)=>{
 })
 
 
+
 userRoutes.set('views','view/user')
 userRoutes.get("/home",userController.loadHome)
+userRoutes.get("/",userController.loadHome)
 
 // view 
 

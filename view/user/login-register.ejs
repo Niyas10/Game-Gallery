@@ -64,6 +64,8 @@
                                                     <span style="color: red;"><%= locals.message? message:'' %></span>
                                                     <input type="email" name="email" placeholder="Email" style="    border: 1px solid">
                                                     <input type="password" name="password" placeholder="Password" style="    border: 1px solid">
+                                                    <div id="message-error" class="text-danger"></div>
+
                                                       <div>
                                                        
                                                             <!-- <i class="bi bi-eye-slash-fill" id="togglePassword"></i> -->
@@ -74,8 +76,8 @@
                                                        
                                                         <div class="row  text-center">
                                                             <div class="col-12" style="    display: flex;
-                                                            justify-content: space-between;">
-                                                                <div><a href="/forgetPassword">Forgot Password?</a></div>
+                                                            justify-content: center;">
+                                                                <!-- <div><a href="/forgetPassword">Forgot Password?</a></div> -->
                                                              <div>  <button type="submit">Login</button></div> 
                                                              
                                                             </div>
@@ -92,7 +94,8 @@
                                         <div class="login-form-container" style="padding: 40px;border: 1px solid">
                                             <div class="login-register-form">
                                                 <form action="/signup" method="post" id="submit-form">
-                                                    <div id="message-error" class="text-danger"></div>
+                                                   
+
                                                     <div class="row" style="justify-content: space-around;">
                                                     <input type="text" name="username" placeholder="Username" id="username-input"  class="col-lg-5" style="    border: 1px solid">
                                                     <input name="userEmail" placeholder="Email" type="email" id="email-input"  class="col-lg-5"  style="    border: 1px solid">
@@ -101,11 +104,14 @@
                                                     <input type="password" name="confirmPassword"
                                                         placeholder="Confirm Password" class="col-lg-5" style=" border: 1px solid" id="confirmPassword-input">
                                                     </div>
+                                                    <div id="message-error" class="text-danger"></div>
+
                                                     <div class="row text-center">
                                                         <div class="col-12">
                                                             <div class="button-box">
                                                                 <button type="submit">Register</button>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </form>

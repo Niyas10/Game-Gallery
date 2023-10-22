@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const Addresses = require('../models/addressModel')
 const { getOTP, securePassword } = require('../helpers/generator')
 const Products = require('../models/productModel')
+require('dotenv').config()
 
 // loadHome
 
@@ -51,33 +52,37 @@ const postSignup = async (req, res) => {
     try {
       const { username,userEmail,userNumber, password,confirmPassword} = req.body;
   
-  
-      if (password == confirmPassword) {
-        const userData = await User.findOne({ email:userEmail });
-        if (userData) {
-          console.log("User already exists");
-          return res.render("signUp", { message: "User already exists" });
+      if(username){
+
+        if (password == confirmPassword) {
+          const userData = await User.findOne({ email:userEmail });
+          if (userData) {
+            console.log("User already exists");
+            return res.render("signUp", { message: "User already exists" });
+          }
+          const OTP = req.session.OTP = getOTP();
+          console.log(OTP);
+          req.session.save();
+          req.session.username = username;
+          req.session.email = userEmail;
+          req.session.mobile = userNumber;
+          req.session.password = password;
+          console.log(username,userEmail);
+          sendVerifyMail(username, userEmail, OTP);
+          res.render("otp", {
+            title: "Verification Page",
+            username,
+            email:userEmail,
+            mobile:userNumber,
+            password,
+            message: "Please check your email",
+          });
+        } else {
+          console.log("Password not matching");
+          res.render("signup", { message: "Passwords not matching" });
         }
-        const OTP = req.session.OTP = getOTP();
-        console.log(OTP);
-        req.session.save();
-        req.session.username = username;
-        req.session.email = userEmail;
-        req.session.mobile = userNumber;
-        req.session.password = password;
-  
-        sendVerifyMail(username, userEmail, OTP);
-        res.render("otp", {
-          title: "Verification Page",
-          username,
-          email:userEmail,
-          mobile:userNumber,
-          password,
-          message: "Please check your email",
-        });
-      } else {
-        console.log("Password not matching");
-        res.render("signup", { message: "Passwords not matching" });
+      }else{
+        res.render('login-register',{message:'please provide username'})
       }
     } catch (error) {
       console.log(error.message);
@@ -87,6 +92,7 @@ const postSignup = async (req, res) => {
 // Collect Deatiles
 
   const sendVerifyMail = async (username, email, OTP) => {
+   
     try {
       const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -98,22 +104,27 @@ const postSignup = async (req, res) => {
           pass: process.env.PASSWORD,
         },
       });
-  
+
+
       const mailOptions = {
         from: "prosgaming157@gmail.com",
         to: email,
         subject: "For Verification of Mail",
         html: `<h1>  ${username}!!! Look at ME! </h1> <h5>Your OTP for verification is,</h5> <p>OTP:${OTP}</p>`,
       };
+    
       transporter.sendMail(mailOptions, function (error, info) {
+      
         if (error) {
-          console.log(error);
+          console.log(error+'             hy');
         } else {
           console.log("Email has been sent:- ", info.response);
         }
       });
     } catch (error) {
+      console.log('hy bye faizu ');
       console.log(error.message);
+      
     }
   };
 
@@ -178,7 +189,7 @@ const postLogin = async (req, res) => {
     const userData = await User.findOne({ email });
   
     if (userData) {
-      req.session.userId = userData;
+      // req.session.userId = userData;
       const passwordMatch = await bcrypt.compare(password, userData.password);
       if (passwordMatch) {
         // console.log('password matched');
@@ -277,6 +288,7 @@ const forgetPassword = async(req,res)=>{
 const loadProfile = async(req, res, next) => {
     try {
         const userId = req.session.userId;
+        console.log(userId,'userId');
         
         if(!userId){
           return res.redirect('/signup')
